@@ -4,6 +4,7 @@
     "description": "",
     "main": "webpack.base.config.js",
     "scripts": {
+        "deploy": "npm run build && npx gh-pages -d dist -e migration-newip-to-ts",
         "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
         "build": "webpack --config ./webpack.config.js --env mode=prod",
         "lint": "eslint . --ext .ts"
@@ -17,6 +18,8 @@
     "license": "ISC",
     "homepage": "",
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.59.9",
+        "@typescript-eslint/parser": "^5.59.9",
         "clean-webpack-plugin": "^3.0.0",
         "copy-webpack-plugin": "^7.0.0",
         "css-loader": "^5.1.0",
@@ -24,9 +27,13 @@
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-import": "^2.23.3",
         "eslint-plugin-prettier": "^3.4.0",
+        "eslint-webpack-plugin": "^4.0.1",
+        "gh-pages": "^5.0.0",
         "html-webpack-plugin": "^5.2.0",
         "prettier": "2.2.1",
         "style-loader": "^2.0.0",
+        "ts-loader": "^9.4.3",
+        "typescript": "^5.1.3",
         "webpack": "^5.37.1",
         "webpack-cli": "^4.5.0",
         "webpack-dev-server": "^3.11.2",
