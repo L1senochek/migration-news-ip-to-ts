@@ -20,18 +20,23 @@ class Loader {
   }
 
   getResp(
-    { endpoint, options = {} }: { endpoint: string; options?: Record<string, string> },
+    {
+      endpoint,
+      options = {},
+    }: { endpoint: string; options?: Record<string, string> },
     callback = (): void => {
-      console.error('No callback for GET response');
+      console.error("No callback for GET response");
     }
   ) {
-    this.load('GET', endpoint, callback, options);
+    this.load("GET", endpoint, callback, options);
   }
 
   errorHandler<T>(res: ApiResponse<T>): ApiResponse<T> {
     if (!res.ok) {
       if (res.status === 401 || res.status === 404)
-        console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+        console.log(
+          `Sorry, but there is ${res.status} error: ${res.statusText}`
+        );
       throw Error(res.statusText);
     }
     return res;
@@ -48,12 +53,19 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load<T>(method: string, endpoint: string, callback: (data: T) => void, options: Record<string, string> = {}) {
+  load<T>(
+    method: string,
+    endpoint: string,
+    callback: (data: T) => void,
+    options: Record<string, string> = {}
+  ) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then((res: Response) => {
         if (!res.ok) {
           if (res.status === 401 || res.status === 404)
-            console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+            console.log(
+              `Sorry, but there is ${res.status} error: ${res.statusText}`
+            );
           throw Error(res.statusText);
         }
         return res.json();
