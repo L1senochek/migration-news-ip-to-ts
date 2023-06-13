@@ -53,6 +53,24 @@ class AppController extends AppLoader {
       }
     }
   }
+  searchNews(
+    query: string,
+    callback: <
+      T extends { status: string; totalResults: number; articles?: NewsItem[] }
+    >(
+      data?: T
+    ) => void
+  ) {
+    super.getResp(
+      {
+        endpoint: "everything",
+        options: {
+          q: query,
+        },
+      },
+      callback
+    );
+  }
 }
 
 export default AppController;
