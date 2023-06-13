@@ -23,7 +23,7 @@ header h1 {
 .search-button__ico {
   position: absolute;
   width: 3vw;
-  padding: 1em;
+  padding: 1.2vw;
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
 }
@@ -38,7 +38,7 @@ header h1 {
   border-radius: 5px;
   font: inherit;
   line-height: 1;
-  padding: 1em 2em;
+  padding: 1vw 2.6vw;
   color: #70d6ff;
 }
 
@@ -46,7 +46,7 @@ header h1 {
 .search-button__input:active {
   outline:none;
   width: 30vw;
-  padding: 1em 2em 1em 4em;
+  padding: 1vw 2vw 1vw 6vw;
 }
 
 .search-button:hover>.search-button__input {
@@ -54,7 +54,7 @@ header h1 {
   color: #69db7e;
   border-color: #3fcc59;
   box-shadow: 0 0.5em 0.5em -0.4em;
-  padding: 1em 2em 1em 4em;
+  padding: 1vw 2vw 1vw 6vw;
 }
 
 .search-button:hover .search-button__ico_color {
@@ -74,7 +74,7 @@ footer {
 }
 
 footer .copyright {
-  font-size: 14px;
+  font-size: 1rem;
   color: #333;
   text-align: center;
 }
