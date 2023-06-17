@@ -1,6 +1,5 @@
-import AppController from "../../controller/controller";
-import AppView from "../appView";
-import { NewsItem } from "../news/news";
+import AppController from '../../controller/controller';
+import AppView, { DrawNews } from '../appView';
 
 class Search {
   private controller: AppController;
@@ -12,18 +11,9 @@ class Search {
   }
 
   startSearch(query: string): void {
-    this.controller.searchNews(
-      query,
-      (
-        data:
-          | { status: string; totalResults: number; articles?: NewsItem[] }
-          | undefined
-      ) => {
-        if (data) {
-          this.view.drawNews(data);
-        }
-      }
-    );
+    this.controller.searchNews(query, (data?: DrawNews) => {
+      if (data) this.view.drawNews(data);
+    });
   }
 }
 
