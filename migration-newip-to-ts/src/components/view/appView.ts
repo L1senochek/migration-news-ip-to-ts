@@ -1,18 +1,6 @@
+import { DrawNews, DrawSources } from '../../types/view/appView';
 import News from './news/news';
-import { NewsItem } from './news/news';
 import Sources from './sources/sources';
-import { SourceItem } from './sources/sources';
-
-export interface DrawNews {
-  status: string;
-  totalResult: number;
-  articles?: NewsItem[];
-}
-
-export interface drawSources {
-  status: string;
-  sources?: SourceItem[];
-}
 
 export class AppView {
   private news: News;
@@ -28,7 +16,7 @@ export class AppView {
     if (values) this.news.draw(values);
   }
 
-  drawSources(data: drawSources) {
+  drawSources(data: DrawSources) {
     const values = data.sources;
     if (values) this.sources.draw(values);
   }

@@ -1,14 +1,5 @@
+import { SourceItem } from '../../../types/view/sources/sources';
 import './sources.css';
-
-export interface SourceItem {
-  category: string;
-  country: string;
-  description: string;
-  id: string;
-  language: string;
-  name: string;
-  url: string;
-}
 
 class Sources {
   draw(data: SourceItem[]): void {

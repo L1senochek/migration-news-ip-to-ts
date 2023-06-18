@@ -1,5 +1,6 @@
+import { DrawNews } from '../../../types/view/appView';
 import AppController from '../../controller/controller';
-import AppView, { DrawNews } from '../appView';
+import AppView from '../appView';
 
 class Search {
   private controller: AppController;

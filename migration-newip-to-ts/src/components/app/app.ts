@@ -1,11 +1,6 @@
+import { DrawNews, DrawSources } from '../../types/view/appView';
 import AppController from '../controller/controller';
-import { AppView, DrawNews } from '../view/appView';
-import { SourceItem } from '../view/sources/sources';
-
-type getSources = {
-  status: string;
-  sources?: SourceItem[];
-};
+import AppView from '../view/appView';
 
 class App {
   private controller: AppController;
@@ -23,7 +18,7 @@ class App {
       });
     });
 
-    this.controller.getSources((data?: getSources) => {
+    this.controller.getSources((data?: DrawSources) => {
       if (data) this.view.drawSources(data);
     });
   }
