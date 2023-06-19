@@ -54,6 +54,37 @@ class AppController extends AppLoader {
       callback
     );
   }
+
+  getCountryNews(e: Event, callback: Callback<DrawNews>) {
+    let target = e.target;
+    const newsContainer = e.currentTarget;
+
+    while (target !== newsContainer) {
+      if (target instanceof Element) {
+        if (target.classList.contains('countries__item')) {
+          const countyId: string | null = target.getAttribute('data-countries-id');
+          if (
+            countyId !== null &&
+            newsContainer instanceof Element &&
+            newsContainer.getAttribute('data-county') !== countyId
+          ) {
+            newsContainer.setAttribute('data-county', countyId);
+            super.getResp(
+              {
+                endpoint: EndpointTypes.TopHeadlines,
+                options: {
+                  country: countyId,
+                },
+              },
+              callback
+            );
+          }
+          return;
+        }
+        target = target.parentNode;
+      }
+    }
+  }
 }
 
 export default AppController;
