@@ -1,0 +1,94 @@
+body {
+  color: #fff;
+  background: #17181c;
+  font-family: sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+}
+
+header h1 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.search-button {
+  display: flex;
+}
+
+.search-button__ico {
+  position: absolute;
+  width: 2vw;
+  padding: 1vw;
+}
+
+.search-button__input {
+  width: 4vw;
+  height: 4vw;
+  transition: 0.6s ease-out;
+  background: none;
+  border: 2px solid #30c5ff;
+  border-radius: 5px;
+  font: inherit;
+  padding: 1vw 2vw;
+  color: #70d6ff;
+}
+
+.search-button__input:focus, 
+.search-button__input:active {
+  outline: none;
+  width: 30vw;
+  padding: 1vw 2vw 1vw 5vw;
+}
+
+:-webkit-input-placeholder,
+:-moz-placeholder,
+:-ms-input-placeholder { 
+  color: #b0e9ff; 
+}
+
+footer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+footer .copyright {
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+footer .copyright a,
+footer .github,
+footer .logo {
+  color: #444;
+  cursor: pointer;
+}
+
+footer .copyright a:hover {
+  color: #555;
+}
+
+footer .copyright:before {
+  content: '©';
+}
+
+@media(hover: hover) {
+  .search-button:hover .search-button__input {
+    width: 30vw;
+    color: #69db7e;
+    border-color: #3fcc59;
+    box-shadow: 0 0.5em 0.5em -0.4em;
+    padding: 1vw 2vw 1vw 5vw;
+  }
+  
+  .search-button:hover .search-button__ico_color {
+    fill: #3fcc59;
+  }
+}
