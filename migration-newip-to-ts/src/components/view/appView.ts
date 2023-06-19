@@ -1,26 +1,17 @@
+import { DrawNews, DrawSources } from '../../types/view/appView';
+import Countries from './countries/countries';
 import News from './news/news';
-import { NewsItem } from './news/news';
 import Sources from './sources/sources';
-import { SourceItem } from './sources/sources';
-
-export interface DrawNews {
-  status: string;
-  totalResult: number;
-  articles?: NewsItem[];
-}
-
-export interface drawSources {
-  status: string;
-  sources?: SourceItem[];
-}
 
 export class AppView {
   private news: News;
   private sources: Sources;
+  private countries: Countries;
 
   constructor() {
     this.news = new News();
     this.sources = new Sources();
+    this.countries = new Countries();
   }
 
   drawNews(data: DrawNews) {
@@ -28,9 +19,13 @@ export class AppView {
     if (values) this.news.draw(values);
   }
 
-  drawSources(data: drawSources) {
+  drawSources(data: DrawSources) {
     const values = data.sources;
     if (values) this.sources.draw(values);
+  }
+
+  drawCountries(countries: string[]) {
+    this.countries.draw(countries);
   }
 }
 

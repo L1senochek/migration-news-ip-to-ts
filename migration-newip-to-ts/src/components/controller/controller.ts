@@ -1,18 +1,18 @@
-import { DrawNews } from '../view/appView';
-import { SourceItem } from '../view/sources/sources';
+import { Callback, EndpointTypes } from '../../types/controller/controller';
+import { DrawNews, DrawSources } from '../../types/view/appView';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-  getSources(callback: <T extends { status: string; sources?: SourceItem[] }>(data?: T) => void) {
+  getSources(callback: Callback<DrawSources>) {
     super.getResp(
       {
-        endpoint: 'sources',
+        endpoint: EndpointTypes.Sources,
       },
       callback
     );
   }
 
-  getNews(e: Event, callback: (data?: DrawNews) => void) {
+  getNews(e: Event, callback: Callback<DrawNews>) {
     let target = e.target;
     const newsContainer = e.currentTarget;
 
@@ -28,7 +28,7 @@ class AppController extends AppLoader {
             newsContainer.setAttribute('data-source', sourceId);
             super.getResp(
               {
-                endpoint: 'everything',
+                endpoint: EndpointTypes.Everything,
                 options: {
                   sources: sourceId,
                 },
@@ -42,16 +42,48 @@ class AppController extends AppLoader {
       }
     }
   }
-  searchNews(query: string, callback: (data?: DrawNews) => void) {
+
+  searchNews(query: string, callback: Callback<DrawNews>) {
     super.getResp(
       {
-        endpoint: 'everything',
+        endpoint: EndpointTypes.Everything,
         options: {
           q: query,
         },
       },
       callback
     );
+  }
+
+  getCountryNews(e: Event, callback: Callback<DrawNews>) {
+    let target = e.target;
+    const newsContainer = e.currentTarget;
+
+    while (target !== newsContainer) {
+      if (target instanceof Element) {
+        if (target.classList.contains('countries__item')) {
+          const countyId: string | null = target.getAttribute('data-countries-id');
+          if (
+            countyId !== null &&
+            newsContainer instanceof Element &&
+            newsContainer.getAttribute('data-county') !== countyId
+          ) {
+            newsContainer.setAttribute('data-county', countyId);
+            super.getResp(
+              {
+                endpoint: EndpointTypes.TopHeadlines,
+                options: {
+                  country: countyId,
+                },
+              },
+              callback
+            );
+          }
+          return;
+        }
+        target = target.parentNode;
+      }
+    }
   }
 }
 

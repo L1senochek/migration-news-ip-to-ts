@@ -1,0 +1,39 @@
+.countries {
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.countries__item {
+  display: flex;
+  padding: 0.25em;
+  width: 2vw;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  background: none;
+  border: 2px solid #30c5ff;
+  border-radius: 5px;
+  font: inherit;
+  line-height: 1;
+  margin: 0.2em;
+  color: #70d6ff;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.countries__item:hover,
+.countries__item:focus {
+  border-color: #3fcc59;
+  color: #69db7e;
+  box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+  transform: translateY(-0.25em);
+}
+
+.countries__item-name {
+  font-weight: 400;
+  white-space: normal;
+}
